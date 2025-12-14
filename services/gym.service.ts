@@ -1,4 +1,4 @@
-import { Gym, gymModel } from "../models";
+import {Gym, gymModel} from "../models/super_admin";
 
 export class GymService {
     async createGym(gym: Gym): Promise<Gym> {

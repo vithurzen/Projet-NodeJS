@@ -4,7 +4,7 @@ export function openMongooseConnection(): Promise<Mongoose> {
     const vars = ["MONGODB_URI", "MONGODB_USER", "MONGODB_PASSWORD", "MONGODB_DATABASE"];
     for (const varName of vars) {
         if (typeof process.env[varName] === 'undefined') {
-            throw  new Error('Missing ${varName} env variable');
+            throw  new Error(`Missing ${varName} env variable`);
         }
     }
     return connect(process.env.MONGODB_URI!, {

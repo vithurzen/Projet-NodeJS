@@ -1,5 +1,5 @@
 import { Schema } from "mongoose";
-import { User, UserRole } from "../../../models";
+import {User, UserRole} from "../../../models/super_admin";
 
 export function getUserSchema(): Schema<User> {
     return new Schema<User>({

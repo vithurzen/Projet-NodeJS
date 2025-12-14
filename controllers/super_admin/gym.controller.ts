@@ -1,6 +1,6 @@
-import { Gym } from "../../models/super_admin/gym.interface";
-import { GymService } from "../../services/gym.service";
 import {json, Request, Response, Router} from "express";
+import {GymService} from "../../services/gym.service";
+import {Gym} from "../../models/super_admin";
 
 export class GymController {
     readonly gymService: GymService;

@@ -1,6 +1,6 @@
-import { ExerciseType } from "../../models/super_admin/exercise_types.interface";
-import { ExerciseTypesService } from "../../services/exercise_types.service";
 import {json, Request, Response, Router} from "express";
+import {ExerciseTypesService} from "../../services/exercise_types.service";
+import {ExerciseType} from "../../models/super_admin";
 
 export class ExerciseTypesController {
     readonly exerciseTypesModel: ExerciseTypesService;

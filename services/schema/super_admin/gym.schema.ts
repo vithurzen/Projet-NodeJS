@@ -1,5 +1,5 @@
 import { Schema } from "mongoose";
-import { DifficultyLevel, Gym, Status} from "../../../models";
+import {DifficultyLevel, Gym, Status} from "../../../models/super_admin";
 
 export function getGymSchema(): Schema<Gym> {
     return new Schema<Gym>({

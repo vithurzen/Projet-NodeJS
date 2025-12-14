@@ -1,12 +1,10 @@
 import { Schema } from "mongoose";
 import {
     Challenge,
-    ChallengeDifficulty,
-    ChallengeType,
-    ChallengeVisibility,
-    ChallengeOrigin,
     ChallengeApprovalStatus,
-} from "../../../models/";
+    ChallengeDifficulty,
+    ChallengeOrigin, ChallengeType, ChallengeVisibility
+} from "../../../models/client/challenge.interface";
 
 export function getChallengeSchema(): Schema<Challenge> {
     return new Schema<Challenge>(
@@ -64,11 +62,11 @@ export function getChallengeSchema(): Schema<Challenge> {
                 required: true
             },
 
-            exerciseTypes: {
-                type: [Schema.Types.ObjectId] as any,
+            exerciseTypes: [{
+                type: Schema.Types.ObjectId,
                 ref: "exercise_types",
                 required: true,
-            },
+            }],
 
             goals: {
                 type: Object
