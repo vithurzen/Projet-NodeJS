@@ -1,8 +1,8 @@
 import { Schema } from "mongoose";
-import { DifficultyLevel, TrainingRoom } from "../../../models/super_admin/training_room.interface";
+import { DifficultyLevel, Gym} from "../../../models/super_admin/gym.interface";
 
-export function getTrainingRoomSchema(): Schema<TrainingRoom> {
-    return new Schema<TrainingRoom>({
+export function getGymSchema(): Schema<Gym> {
+    return new Schema<Gym>({
         name: {
             type: String,
             required: true,
@@ -34,7 +34,7 @@ export function getTrainingRoomSchema(): Schema<TrainingRoom> {
         }
     }, {
         versionKey: false,
-        collection: 'training_rooms',
+        collection: 'gym',
         timestamps: {
             updatedAt: 'updatedAt',
         }

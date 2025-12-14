@@ -7,11 +7,18 @@ export enum DifficultyLevel {
     advanced = "advanced"
 }
 
-export interface TrainingRoom {
+export enum Status {
+    pending = "pending",
+    approved = "approved",
+    rejected = "rejected",
+}
+
+export interface Gym {
     _id: string;
     name: string;
     capacity: number;
     equipments: string[];
+    status: Status;
     address: string;
     exerciseTypes: string[];
     difficultyLevels: DifficultyLevel;
