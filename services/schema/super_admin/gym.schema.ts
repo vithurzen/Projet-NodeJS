@@ -1,5 +1,6 @@
 import { Schema } from "mongoose";
-import { DifficultyLevel, Gym, Status} from "../../../models";
+import { DifficultyLevel, Status } from "../../../models/super_admin/gym.interface";
+import type { Gym } from "../../../models/super_admin/gym.interface";
 
 export function getGymSchema(): Schema<Gym> {
     return new Schema<Gym>({
@@ -26,7 +27,6 @@ export function getGymSchema(): Schema<Gym> {
         },
         exerciseTypes: {
             type: [{ type: Schema.Types.ObjectId, ref: "exercise_types" }],
-            required: true,
         },
         difficultyLevels: {
             type: String,
