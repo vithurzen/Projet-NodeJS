@@ -1,6 +1,6 @@
 import { config } from "dotenv";
 import express from 'express';
-import { GymService } from "./services/super_admin/gym.service";
+import { GymService } from "./services/gym.service";
 import { GymController } from "./controllers/super_admin/gym.controller";
 import { openMongooseConnection } from "./utils/mongoose-connect.utils";
 import { ExerciseTypesService } from "./services/exercise_types.service";

@@ -1,5 +1,4 @@
-import { Gym } from "../../models/super_admin/gym.interface";
-import { gymModel } from "../../models/super_admin/gym.model";
+import { Gym, gymModel } from "../models";
 
 export class GymService {
     async createGym(gym: Gym): Promise<Gym> {

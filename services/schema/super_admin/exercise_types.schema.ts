@@ -1,5 +1,5 @@
 import { Schema } from "mongoose";
-import { ExerciseType } from "../../../models/super_admin/exercise_types.interface";
+import { ExerciseType } from "../../../models";
 
 export function getExerciseTypesSchema(): Schema<ExerciseType> {
     return new Schema<ExerciseType>({

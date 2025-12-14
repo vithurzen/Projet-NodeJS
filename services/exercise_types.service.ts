@@ -1,5 +1,4 @@
-import { ExerciseType } from "../models/super_admin/exercise_types.interface";
-import { exerciseTypesModel } from "../models/super_admin/exercise_types.model";
+import { ExerciseType, exerciseTypesModel } from "../models";
 
 export class ExerciseTypesService {
     async createExerciseType(exerciseType: ExerciseType): Promise<ExerciseType> {
