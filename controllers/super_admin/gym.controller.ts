@@ -1,5 +1,5 @@
 import { Gym } from "../../models/super_admin/gym.interface";
-import { GymService } from "../../services/super_admin/gym.service";
+import { GymService } from "../../services/gym.service";
 import {json, Request, Response, Router} from "express";
 
 export class GymController {

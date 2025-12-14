@@ -1,5 +1,5 @@
 import { Schema } from "mongoose";
-import { DifficultyLevel, Gym, Status} from "../../../models/super_admin/gym.interface";
+import { DifficultyLevel, Gym, Status} from "../../../models";
 
 export function getGymSchema(): Schema<Gym> {
     return new Schema<Gym>({
@@ -9,7 +9,7 @@ export function getGymSchema(): Schema<Gym> {
         },
         capacity: {
             type: Number,
-            required: true, 
+            required: true,
         },
         equipments: {
             type: [String],
