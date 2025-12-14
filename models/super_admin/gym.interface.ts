@@ -1,5 +1,4 @@
-import { Types } from "mongoose";
-import { User } from "./user.interface";
+import { ObjectId, Types } from "mongoose";
 
 export enum DifficultyLevel {
     beginner = "beginner",
@@ -20,7 +19,7 @@ export interface Gym {
     equipments: string[];
     status: Status;
     address: string;
-    exerciseTypes: string[];
+    exerciseTypes: ObjectId[];
     difficultyLevels: DifficultyLevel;
     manager: Types.ObjectId;
 }
