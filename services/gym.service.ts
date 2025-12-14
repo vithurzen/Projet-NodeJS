@@ -30,6 +30,48 @@ export class GymService {
         return updateGym;
     }
 
+    async approveGym(id: string): Promise<Gym> {
+        const updatedGym = await gymModel.findByIdAndUpdate(
+        id,
+        { status: "approved" },
+        { new: true }
+        );
+
+        if (!updatedGym) {
+            throw new Error("Gym not found");
+        }
+
+        return updatedGym;
+    }
+
+    async assignExerciseTypesToGym(id: string, exerciseTypeIds: string[]): Promise<Gym> {
+        const updatedGym = await gymModel.findByIdAndUpdate(
+        id,
+        { exerciseTypes: exerciseTypeIds },
+        { new: true }
+        );
+
+        if (!updatedGym) {
+            throw new Error("Gym not found");
+        }
+
+        return updatedGym;
+    }
+
+    async assignDifficultyLevelToGym(id: string, difficultyLevel: string): Promise<Gym> {
+        const updatedGym = await gymModel.findByIdAndUpdate(
+        id,
+        { difficultyLevels: difficultyLevel },
+        { new: true }
+        );
+
+        if (!updatedGym) {
+            throw new Error("Gym not found");
+        }
+
+        return updatedGym;
+    }
+
     async deleteGym(id: string): Promise<void> {
         const deleteGym = await gymModel.findByIdAndDelete(id);
 
