@@ -10,10 +10,18 @@ export class UserController {
         this.userService = userService;
     }
 
-    async createUser(req: Request, res: Response) {
-        const user = req.body as User;
-        const newUser = await this.userService.createUser(user);
-        return res.status(201).json(newUser);
+    async create(req: Request, res: Response) {
+        if(!req.body
+            || !req.body.email
+            || !req.body.password) {
+            res.status(400).end();
+            return;
+    }
+
+        const signupDto = req.body;
+
+        const user = await this.userService.createUser(signupDto);
+        res.json(user);
     }
 
     async getUserById(req: Request<{ id: string }>, res: Response) {
@@ -54,7 +62,6 @@ export class UserController {
         const router = Router();
         router.get("/", this.getAllUsers.bind(this));
         router.get("/:id", this.getUserById.bind(this));
-        router.post("/", json(),this.createUser.bind(this));
         router.patch("/:id", json(), this.updateUser.bind(this));
         router.patch("/:id/deactivate", this.deactivate.bind(this));
         router.patch("/:id/activate", this.activate.bind(this));

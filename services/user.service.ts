@@ -1,27 +1,28 @@
 import { User } from "../models";
+import { SignupDto } from "../models/super_admin/auth.interface";
 import { userModel } from "../models/super_admin/user.model";
-import bcrypt from "bcrypt";
+import { sha256 } from "../utils/security.utils";
 
 export class UserService {
-    async createUser(user: User): Promise<User> {
-        const email = user.email.trim().toLowerCase();
-        const password = user.password;
-        if (!password || password.length < 6) {
-        throw new Error("Password must be at least 6 characters long.");
-        }
 
-        const hashedPassword = await bcrypt.hash(password, 12);
+    async isEmpty(): Promise<boolean> {
+        const user = await userModel.findOne();
+        return user === null;
+    }
 
-        const created = await userModel.create({
-            ...user,
-            email,
-            password: hashedPassword,
+    createUser(dto: SignupDto): Promise<User> {
+        return userModel.create({
+            ...dto,
+            password: sha256(dto.password, 'c@rt3l'),
         });
+    }
 
-        const obj = created.toObject() as User;
-        delete (obj as any).password;
-
-        return obj;
+    findActiveUser(login: string, password: string): Promise<User | null> {
+        return userModel.findOne({
+            email: login,
+            password: sha256(password, 'c@rt3l'),
+            isActive: true
+        });
     }
 
     async getUserById(id: string): Promise<User> {
