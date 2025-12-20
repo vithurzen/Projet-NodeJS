@@ -1,5 +1,5 @@
 import { Schema } from "mongoose";
-import { UserBadge } from "../../../models";
+import {UserBadge} from "../../../models/super_admin";
 
 export function getUserBadgeSchema(): Schema<UserBadge> {
     return new Schema<UserBadge>({

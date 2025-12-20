@@ -1,5 +1,7 @@
 import { config } from "dotenv";
 import express from 'express';
+import {ChallengeService} from "./services/challenge.services";
+import {ChallengeController} from "./controllers/client";
 import { GymService } from "./services/gym.service";
 import { GymController } from "./controllers/super_admin/gym.controller";
 import { ExerciseTypesService } from "./services/exercise_types.service";
@@ -32,19 +34,23 @@ async function main() {
 
     const badgeService = new BadgeService();
     const badgeController = new BadgeController(badgeService);
-    app.use('/badge', badgeController.buildRouter())
+    app.use('/badge', badgeController.buildRouter());
 
     const userService = new UserService();
     const userController = new UserController(userService);
-    app.use('/user', userController.buildRouter())
+    app.use('/user', userController.buildRouter());
 
     const userBadgeService = new UserBadgeService();
     const userBadgeController = new UserBadgeController(userBadgeService);
-    app.use('/user-badge', userBadgeController.buildRouter())
+    app.use('/user-badge', userBadgeController.buildRouter());
 
     const sessionService = new SessionService(conn);
     const authController = new AuthController(userService, sessionService);
-    app.use('/auth', authController.buildRouter())
+    app.use('/auth', authController.buildRouter());
+
+    const challengeService = new ChallengeService();
+    const challengeController = new ChallengeController(challengeService);
+    app.use('/challenge', challengeController.buildRouter());
 
     app.listen(3000, function() {
         console.log("listening on 3000....")
