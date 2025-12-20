@@ -33,6 +33,26 @@ export class GymController {
         res.status(200).json(updatedGym);
     }
 
+    async approveGym(req: Request<{ id: string }>, res: Response) {
+        const id = req.params.id;
+        const approvedGym = await this.gymService.approveGym(id);
+        res.status(200).json(approvedGym);
+    }
+
+    async assignExerciseTypesToGym(req: Request<{ id: string }>, res: Response) {
+        const id = req.params.id;
+        const { exerciseTypes } = req.body;
+        const updatedGym = await this.gymService.assignExerciseTypesToGym(id, exerciseTypes);
+        res.status(200).json(updatedGym);
+    }
+
+    async assignDifficultyLevelsToGym(req: Request<{ id: string }>, res: Response) {
+        const id = req.params.id;
+        const { difficultyLevels } = req.body;
+        const updatedGym = await this.gymService.assignDifficultyLevelToGym(id, difficultyLevels);
+        res.status(200).json(updatedGym);
+    }
+
     async deleteGym(req: Request<{ id: string }>, res: Response) {
         const id = req.params.id;
         await this.gymService.deleteGym(id);
@@ -45,6 +65,9 @@ export class GymController {
         router.get("/:id", this.getGymById.bind(this));
         router.post("/", json(),this.createGym.bind(this));
         router.patch("/:id", json(), this.updateGym.bind(this));
+        router.patch("/:id/approve", json(), this.approveGym.bind(this));
+        router.patch("/:id/exercise-types", json(), this.assignExerciseTypesToGym.bind(this));
+        router.patch("/:id/difficulty-levels", json(), this.assignDifficultyLevelsToGym.bind(this));
         router.delete("/:id", this.deleteGym.bind(this));
         return router;
     }
