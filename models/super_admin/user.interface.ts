@@ -12,7 +12,7 @@ export interface User {
     lastName: string;
     email: string;
     password: string;
-    telephone: string;
+    telephone?: string;
     dateOfBirth: Date;
     role: UserRole;
     isActive: boolean;

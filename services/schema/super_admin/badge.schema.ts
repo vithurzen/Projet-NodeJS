@@ -12,8 +12,8 @@ export function getBadgeSchema(): Schema<Badge> {
             required: true,
         },
         rule: {
-            metric: { type: String, required: true },
-            value: { type: Number, required: true },
+            type: String,
+            required: true,
         }
     }, {
         versionKey: false,

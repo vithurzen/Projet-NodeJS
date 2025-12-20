@@ -10,7 +10,7 @@ export function getUserBadgeSchema(): Schema<UserBadge> {
         },
         badgeId: {
             type: Schema.Types.ObjectId,
-            ref: 'badges',
+            ref: 'badge',
             required: true,
         },
         awardedAt: {
