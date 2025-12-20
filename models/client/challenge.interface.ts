@@ -1,3 +1,5 @@
+import {Gym, User} from "../super_admin";
+
 export enum ChallengeDifficulty {
     easy = "easy",
     medium = "medium",
@@ -35,9 +37,9 @@ export interface ChallengeGoals {
 
 export interface Challenge {
     _id: string;
-    creator: string;
+    creator: string | User;
     // uniquement pour les défis liés à une salle
-    gymId?: string;
+    gymId?: string | Gym;
     origin: ChallengeOrigin;
     approvalStatus: ChallengeApprovalStatus;
     title: string;

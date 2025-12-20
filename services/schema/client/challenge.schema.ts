@@ -10,13 +10,13 @@ export function getChallengeSchema(): Schema<Challenge> {
     return new Schema<Challenge>(
         {
             creator: {
-                type: Schema.Types.ObjectId as any,
+                type: Schema.Types.ObjectId,
                 ref: "user",
                 required: true,
             },
 
             gymId: {
-                type: Schema.Types.ObjectId as any,
+                type: Schema.Types.ObjectId,
                 ref: "gym",
                 required: false,
             },
@@ -63,7 +63,7 @@ export function getChallengeSchema(): Schema<Challenge> {
             },
 
             exerciseTypes: [{
-                type: Schema.Types.ObjectId,
+                type: Schema.Types.ObjectId as any,
                 ref: "exercise_types",
                 required: true,
             }],

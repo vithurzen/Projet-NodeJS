@@ -1,7 +1,9 @@
+import {Challenge} from "./challenge.interface";
+import {User} from "../super_admin";
+
 export interface ChallengeParticipant {
     _id: string;
-    challengeId: string;
-    userId: string;
-    joinedAt: Date;
-    leftAt?: Date | null; // null/undefined si encore participant
+    challengeId: string | Challenge;
+    userId: string | User;
+    leftId?: string | null;
 }
