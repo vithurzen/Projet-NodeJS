@@ -9,7 +9,7 @@ export function getSessionSchema(): Schema<Session> {
         },
         user: {
             type: Types.ObjectId,
-            ref: "User",
+            ref: "user",
             required: true
         }
     }, {

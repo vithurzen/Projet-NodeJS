@@ -60,6 +60,7 @@ export class UserController {
 
     buildRouter(): Router {
         const router = Router();
+        router.post("/", json(), this.create.bind(this))
         router.get("/", this.getAllUsers.bind(this));
         router.get("/:id", this.getUserById.bind(this));
         router.patch("/:id", json(), this.updateUser.bind(this));
